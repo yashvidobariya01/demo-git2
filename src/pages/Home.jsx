@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import ProfileData from '../Data/data.json'
 import Profile from './Profile';
-import { NavLink } from 'react-router-dom';
-import Header from '../Navbar/Header';
+// import { NavLink } from 'react-router-dom';
+// import Header from '../Navbar/Header';
 
 
 const Home = () => {
@@ -14,14 +14,14 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('data.json');
-                if (!response.ok) {
-                    throw new Error('failed to fetch data');
-                }
+                // const response = await fetch('data.json');
+                // if (!response.ok) {
+                //     throw new Error('failed to fetch data');
+                // }
 
                 const data = ProfileData;
-
                 setprofiles(data);
+                console.log(profiles);
                 setLoading(false);
             } catch (error) {
                 console.error('fetching error', error);
@@ -31,7 +31,7 @@ const Home = () => {
         };
 
         fetchData();
-    }, []);
+    }, [profiles]);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -46,17 +46,17 @@ const Home = () => {
 
             <div className='home-container'>
                 <div className='slider'>
-
+                    {console.log(profiles)}
                     <div className='slider-top'>
                         <div className="left-title">
                             <h3>categories of girls </h3>
                         </div>
 
-                        <div className='more'>
+                        {/* <div className='more'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
                             </svg>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className='slider-top'>
@@ -65,9 +65,9 @@ const Home = () => {
                         </div>
 
                         <div className='more'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            {/* <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-                            </svg>
+                            </svg> */}
                         </div>
                     </div>
 
@@ -78,9 +78,9 @@ const Home = () => {
                         </div>
 
                         <div className='more'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            {/* <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-                            </svg>
+                            </svg> */}
                         </div>
                     </div>
 
@@ -91,9 +91,9 @@ const Home = () => {
                         </div>
 
                         <div className='more'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            {/* <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-                            </svg>
+                            </svg> */}
                         </div>
                     </div>
 
@@ -125,7 +125,7 @@ const Home = () => {
                     <div className='profile-grid'>
                         {/* <NavLink to={`details/id`} > */}
                         {profiles.map((profile) => (
-                            <Profile key={profile.imdbID} profile={profile} />
+                            <Profile key={profile.id} profile={profile} />
                         ))}
                         {/* </NavLink> */}
                     </div>
